@@ -21,7 +21,7 @@ void setup()
   
   analogWriteResolution(12);
   analogReadResolution(12);
-  SerialUSB.begin(9600);
+  Serial.begin(9600);
   
   //IO Load Test
   pinMode(23, OUTPUT);//connect through 220 ohm resistor and ampmeter. this is 15mA source pin
@@ -61,25 +61,25 @@ void loop()
   analogWrite(DAC1,analogRead(8)); //0-3.3V Measure-->[0-3.3V supply]-->ADC-->DAC-->0-3.3 Measure
 
   //ADC test
-  SerialUSB.print("ADC values:  ");
+  Serial.print("ADC values:  ");
   for(int adcpin = 1; adcpin<=11; adcpin++){
     int sensorValue = analogRead(adcpin);
-      SerialUSB.print(adcpin);
-      SerialUSB.print(": ");
-      SerialUSB.print(sensorValue);
-      SerialUSB.print(", ");
+      Serial.print(adcpin);
+      Serial.print(": ");
+      Serial.print(sensorValue);
+      Serial.print(", ");
   }
   
   //IO Test
     //test bidirectional level shifter by plugging both sides of a button to pins 50 and 51 on the 5V side of a bidirectional level shifter
-  SerialUSB.print("Button Fwd = ");
-  SerialUSB.print(testBidirectionalButton(51,50));
-  SerialUSB.print(". Button Rev = ");
-  SerialUSB.print(testBidirectionalButton(50,51));
-  SerialUSB.print(". ");
+  Serial.print("Button Fwd = ");
+  Serial.print(testBidirectionalButton(51,50));
+  Serial.print(". Button Rev = ");
+  Serial.print(testBidirectionalButton(50,51));
+  Serial.print(". ");
 
 
-  SerialUSB.println();
+  Serial.println();
   
 } 
 
